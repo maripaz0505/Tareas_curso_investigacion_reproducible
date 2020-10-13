@@ -1,0 +1,121 @@
+---
+title: "Solución tarea 2"
+author: "Maripaz Castro-Murillo"
+date: "7/10/2020"
+output: html_document
+
+---
+
+```{r setup, include=TRUE}
+
+knitr::opts_knit$set(echo=T)
+
+```
+
+```{r}
+
+setwd("/Users/maripaz/curso_reproducible")
+source("./scripts/replicar_reg_scal.R")
+
+```
+
+
+
+####Calculamos la proporción de falsos positivos para números de variables distintas:
+
+#####*nvars =10*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos10 <- replicar_reg_scal(nvars = 10, alfa = 0.06)
+falsos_positivos10
+```
+
+#####*nvars = 20*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos20 <- replicar_reg_scal(nvars = 20, alfa = 0.06)
+falsos_positivos20
+```
+
+#####*nvars = 50*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos50 <- replicar_reg_scal(nvars = 50, alfa = 0.06)
+falsos_positivos50
+```
+
+#####*nvars = 100*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos100 <- replicar_reg_scal(nvars = 100, alfa = 0.06)
+falsos_positivos100
+```
+
+
+```{r, eval=TRUE, echo=TRUE}
+
+Numero_de_variables <- c(10, 20, 50, 100)
+
+```
+
+```{r, eval=TRUE, echo=TRUE}
+Proporcion_falsos_positivos <- c(falsos_positivos10, falsos_positivos20, falsos_positivos50, falsos_positivos100)
+
+```
+
+####Graficamos la proporción de falsos positivos según el número de variables:
+
+```{r, eval=TRUE, echo=TRUE, fig.align='center'}
+
+plot(Numero_de_variables, Proporcion_falsos_positivos, main = "Gráfico de número de variables vs. proporción de falsos positivos", pch = 21:25, bg= 11:14)
+
+```
+
+
+####Ahora calculamos la proporción de falsos positivos usando un valor de alfa de 0.03, menor a 0.05:
+
+#####*nvars =10*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos10.2 <- replicar_reg_scal(nvars = 10, alfa = 0.03)
+falsos_positivos10.2
+```
+
+#####*nvars =20*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos20.2 <- replicar_reg_scal(nvars = 20, alfa = 0.03)
+falsos_positivos20.2
+```
+
+#####*nvars =10*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos50.2 <- replicar_reg_scal(nvars = 50, alfa = 0.03)
+falsos_positivos50.2
+```
+
+#####*nvars =10*
+```{r, eval=TRUE, echo=TRUE}
+falsos_positivos100.2 <- replicar_reg_scal(nvars = 100, alfa = 0.03)
+falsos_positivos100.2
+```
+
+
+```{r, eval=TRUE, echo=TRUE}
+
+Proporcion_falsos_positivos.2 <- c(falsos_positivos10, falsos_positivos20, falsos_positivos50, falsos_positivos100)
+
+```
+
+
+####Y graficamos los resultados anteriores:
+
+```{r, eval=TRUE, echo=TRUE, fig.align='center'}
+plot(Numero_de_variables, Proporcion_falsos_positivos.2, main = "Gráfico de número de variables vs. proporción de falsos positivos", pch = 21:25, bg= 11:14)
+
+```
+
+####Y mis animales favoritos son ellas, una ya está en el cielo, las otras todavía están conmigo.
+
+![Mis cuilas](cuilas.jpg){width=60%}
+
+```{r, eval=TRUE, echo= FALSE}
+sessionInfo()
+```
+
+
+
